@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plano de Saúde Empresarial | Nossa Saúde</title>
+  <meta name="description" content="Plano de saúde empresarial a partir de 2 vidas para Blumenau, Indaial, Gaspar, Pomerode e Timbó. Fale com Anderson Kruger." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --card:#f8fafc;
+      --border:#e5e7eb;
+      --accent:#f59e0b; /* laranja */
+      --accent2:#fb923c; /* laranja claro */
+      --whats:#16a34a;   /* verde */
+      --shadow: 0 12px 30px rgba(0,0,0,.10);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(245,158,11,.18), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(251,146,60,.14), transparent 55%),
+                  var(--bg);
+      line-height:1.4;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.75);
+      border-bottom: 1px solid rgba(229,231,235,.7);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
+    }
+    .brand img{ width: 46px; height:46px; object-fit:contain; }
+    .brand strong{ font-size: 16px; }
+    .nav{
+      display:flex; gap:16px; flex-wrap:wrap;
+      font-size: 14px; color: var(--muted);
+    }
+    .nav a:hover{ color: var(--text); }
+
+    .cta-whats{
+      display:inline-flex; align-items:center; gap:10px;
+      background: rgba(22,163,74,.10);
+      border: 1px solid rgba(22,163,74,.25);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--whats);
+      transition: transform .08s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .cta-whats:hover{ transform: translateY(-1px); box-shadow: 0 10px 24px rgba(22,163,74,.18); }
+    .cta-whats small{ font-weight: 600; opacity:.9; }
+
+    /* Hero */
+    .hero{
+      padding: 44px 0 22px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items:center;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      background: linear-gradient(90deg, rgba(245,158,11,.12), rgba(251,146,60,.10));
+      border: 1px solid rgba(245,158,11,.25);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #92400e;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 58ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap: 12px; align-items:center;
+      margin: 16px 0 18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-weight: 800;
+      transition: transform .08s ease, box-shadow .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn-primary{
+      border: 1px solid rgba(22,163,74,.25);
+      background: linear-gradient(180deg, rgba(22,163,74,.16), rgba(22,163,74,.10));
+      color: var(--whats);
+    }
+
+    .hero-card{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(229,231,235,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card .images{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .hero-card img{
+      width:100%;
+      height: 230px;
+      object-fit: cover;
+      display:block;
+    }
+    .hero-card .content{
+      padding: 16px 16px 18px;
+    }
+    .pill-row{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 12px; }
+    .pill{
+      font-size: 13px;
+      color: #7c2d12;
+      background: rgba(251,146,60,.12);
+      border: 1px solid rgba(251,146,60,.22);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .section-title{
+      font-size: 22px;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    .section-sub{
+      color: var(--muted);
+      margin: 0 0 16px;
+      max-width: 80ch;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(229,231,235,.9);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    }
+    .card h3{ margin: 0 0 8px; font-size: 16px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 14px; }
+
+    .cities{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      margin-top: 12px;
+    }
+    .city{
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* Contact */
+    .contact{
+      background: linear-gradient(90deg, rgba(245,158,11,.10), rgba(22,163,74,.08));
+      border-top: 1px solid rgba(229,231,235,.9);
+      border-bottom: 1px solid rgba(229,231,235,.9);
+    }
+    .contact-box{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(229,231,235,.9);
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    }
+    .contact-box strong{ font-size: 16px; }
+    .contact-box span{ color: var(--muted); font-size: 14px; display:block; margin-top: 4px; }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .brand{ min-width: auto; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .hero-card img{ height: 210px; }
+      .contact-box{ flex-direction: column; align-items:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <!-- Troque o src pelo caminho do seu logo (ex: ./logo-nossa-saude.png) -->
+          <img src="logo-nossa-saude.png" alt="Nossa Saúde - Logo" />
+          <div>
+            <strong>Nossa Saúde</strong><br>
+            <span style="color:var(--muted); font-size:13px;">Plano de Saúde Empresarial</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Navegação">
+          <a href="#beneficios">Benefícios</a>
+          <a href="#cidades">Cidades atendidas</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <!-- WhatsApp (verde) -->
+        <a class="cta-whats" href="https://wa.me/5547991222311?text=Olá%20Anderson!%20Quero%20cotação%20de%20plano%20de%20saúde%20empresarial%20a%20partir%20de%202%20vidas." target="_blank" rel="noopener">
+          ✅ <span>Anderson Kruger</span>
+          <small>47991222311</small>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge">Empresarial • a partir de 02 vidas</div>
+          <h1>Plano de Saúde Empresarial para sua empresa crescer com tranquilidade</h1>
+          <p class="subtitle">
+            Atendimento e apoio comercial para <strong>Blumenau, Indaial, Gaspar, Pomerode e Timbó</strong>.
+            Tenha opções com ótimo custo-benefício e suporte rápido para cotação.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5547991222311?text=Olá%20Anderson!%20Quero%20cotação%20de%20plano%20de%20saúde%20empresarial%20para%20minha%20empresa." target="_blank" rel="noopener">
+              Falar no WhatsApp (verde)
+            </a>
+            <a class="btn" href="#como-funciona">Ver como funciona</a>
+          </div>
+
+          <div class="pill-row">
+            <div class="pill">Cotação rápida</div>
+            <div class="pill">Para equipes pequenas e médias</div>
+            <div class="pill">Suporte na contratação</div>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Imagens e resumo">
+          <div class="images">
+            <!-- Imagens com no mínimo 2 pessoas (links livres do Unsplash) -->
+            <img alt="Equipe em reunião" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" />
+            <img alt="Colaboradores sorrindo" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" />
+          </div>
+          <div class="content">
+            <strong>Planos empresariais sob medida</strong>
+            <p style="margin:8px 0 0; color:var(--muted); font-size:14px;">
+              Indique o número de vidas e o perfil da equipe e receba opções com valores e comparativos.
+            </p>
+
+            <div class="cities" id="cidades" style="margin-top:14px;">
+              <span class="city">Blumenau</span>
+              <span class="city">Indaial</span>
+              <span class="city">Gaspar</span>
+              <span class="city">Pomerode</span>
+              <span class="city">Timbó</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Benefits -->
+  <section id="beneficios">
+    <div class="container">
+      <h2 class="section-title">Benefícios para sua empresa</h2>
+      <p class="section-sub">
+        Mais saúde, menos preocupações: benefícios que ajudam na retenção de talentos e melhoram a produtividade.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Valorização do time</h3>
+          <p>Benefício forte para atrair e reter colaboradores, aumentando satisfação e engajamento.</p>
+        </div>
+        <div class="card">
+          <h3>Opções a partir de 02 vidas</h3>
+          <p>Ideal para empresas menores, MEIs com equipe, comércios e prestadores de serviço.</p>
+        </div>
+        <div class="card">
+          <h3>Suporte na escolha</h3>
+          <p>Ajuda para comparar opções e selecionar o plano com melhor custo-benefício.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="como-funciona">
+    <div class="container">
+      <h2 class="section-title">Como funciona (bem simples)</h2>
+      <p class="section-sub">
+        Em poucos passos você recebe uma proposta alinhada ao perfil da sua empresa.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1) Envie os dados</h3>
+          <p>Quantidade de vidas (mín. 2), faixa etária média e cidade da empresa.</p>
+        </div>
+        <div class="card">
+          <h3>2) Receba a cotação</h3>
+          <p>Comparativo com opções e orientações de cobertura e contratação.</p>
+        </div>
+        <div class="card">
+          <h3>3) Feche com suporte</h3>
+          <p>Acompanhamento para agilizar assinatura, inclusão de vidas e implantação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contato" class="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <strong>Quer cotar agora?</strong>
+          <span>Fale direto no WhatsApp e receba atendimento para Blumenau, Indaial, Gaspar, Pomerode e Timbó.</span>
+        </div>
+
+        <!-- Link de contato em verde -->
+        <a class="cta-whats" href="https://wa.me/5547991222311?text=Olá%20Anderson!%20Quero%20uma%20cotação%20de%20plano%20de%20saúde%20empresarial%20(02%20vidas%20ou%20mais)%20para%20minha%20empresa." target="_blank" rel="noopener">
+          💬 <span>Anderson Kruger</span>
+          <small>47991222311</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <span>© <span id="year"></span> Nossa Saúde • Plano de Saúde Empresarial</span>
+        <span>•</span>
+        <span style="color:var(--muted);">Atendimento regional: Blumenau, Indaial, Gaspar, Pomerode e Timbó</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
